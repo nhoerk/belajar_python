@@ -47,7 +47,7 @@ Perlu diingat bahwa program ini tidak menggunakan nilai integer melainkan nilai 
 
 import random
 
-NUM_DIGITS = 5
+NUM_DIGITS = 15
 MAX_GUESSES = 15
 
 
