@@ -47,8 +47,8 @@ Perlu diingat bahwa program ini tidak menggunakan nilai integer melainkan nilai 
 
 import random
 
-NUM_DIGITS = 3
-MAX_GUESSES = 10
+NUM_DIGITS = 5
+MAX_GUESSES = 15
 
 
 def main():
@@ -65,7 +65,7 @@ def main():
 
     while True:  # Main game loop
         secretNum = getSecretNum()
-        print("Saya sudah menemukan sebuah nomor.")
+        print("Saya sudah menemukan sebuah nomor sebanyak {} digit.".format(NUM_DIGITS))
         print("anda harus menebak {} untuk mendapatkannya".format(MAX_GUESSES))
 
         numGuesses = 1
@@ -110,9 +110,9 @@ def getCluess(guess, secretNum):
 
     for i in range(len(guess)):
         if (guess[i] == secretNum[i]):
-            clues.append('Fermi')
+            clues.append('Fermi ')
         elif guess[i] in secretNum:
-            clues.append('Pico')
+            clues.append('Pico ')
     if len(clues) == 0:
         return 'Bagels'
     else:
