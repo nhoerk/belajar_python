@@ -61,7 +61,7 @@ def main():
             Begel = tidak ada digit yang benar
           
             misalnya, jika nomor rahasia adalah 248 dan tebakan anda 843, petunjuknya adalah Fermi, Pico.
-            """).format(NUM_DIGITS)
+            """.format(NUM_DIGITS))
 
     while True:  # Main game loop
         secretNum = getSecretNum()
@@ -74,7 +74,7 @@ def main():
             # terus lakukan pengulangan hingga tebakan valid yang diinput:
             while len(guess) != NUM_DIGITS or not guess.isdecimal():
                 print('Tebakan #{}: '.format(numGuesses))
-                guess = input('>')
+                guess = input('> ')
 
             clues = getCluess(guess, secretNum)
             print(clues)
@@ -104,7 +104,7 @@ def getSecretNum():
 
 def getCluess(guess, secretNum):
     if guess == secretNum:
-        return 'Kamu mendapatkanya'
+        return 'Kamu mendapatkanya, betul angkanya adalah = .'.format(secretNum)
 
     clues = []
 
