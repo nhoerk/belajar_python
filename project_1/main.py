@@ -50,6 +50,7 @@ import random
 NUM_DIGITS = 3
 MAX_GUESSES = 10
 
+
 def main():
     print("""
             Saya sedang memikirkan sebuah angka, tanpa digit yang berulang.
@@ -61,8 +62,8 @@ def main():
           
             misalnya, jika nomor rahasia adalah 248 dan tebakan anda 843, petunjuknya adalah Fermi, Pico.
             """).format(NUM_DIGITS)
-    
-    while True: #Main game loop
+
+    while True:  # Main game loop
         secretNum = getSecretNum()
         print("Saya sudah menemukan sebuah nomor.")
         print("anda harus menebak {} untuk mendapatkannya".format(MAX_GUESSES))
@@ -84,7 +85,7 @@ def main():
             if numGuesses > MAX_GUESSES:
                 print("Tebakan anda habis.")
                 print("Jawabannya adalah {}.".format(secretNum))
-        
+
         print("Apakah kamu ingin bermain lagi? (ya atau tidak)")
         if not input('> ').lower().startswith('y'):
             break
@@ -100,6 +101,7 @@ def getSecretNum():
         secretNum += str(numbers[i])
     return secretNum
 
+
 def getCluess(guess, secretNum):
     if guess == secretNum:
         return 'Kamu mendapatkanya'
@@ -107,7 +109,7 @@ def getCluess(guess, secretNum):
     clues = []
 
     for i in range(len(guess)):
-        if(guess[i] == secretNum[i]):
+        if (guess[i] == secretNum[i]):
             clues.append('Fermi')
         elif guess[i] in secretNum:
             clues.append('Pico')
@@ -119,5 +121,4 @@ def getCluess(guess, secretNum):
 
 
 if __name__ == '__main__':
-    main()      
-        
+    main()
