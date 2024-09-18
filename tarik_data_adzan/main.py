@@ -5,7 +5,7 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 import time
 
-bot_token = '7411994949:AAF4SUEzuLTyyf_qS4eTSUDBJsvK6p3G2D0'
+bot_token = ''
 chat_id = ''
 
 def kirim_telegram(bot_token, chat_id):
