@@ -1,8 +1,7 @@
 import requests
 from http.cookies import SimpleCookie
 import datetime
-from selenium import webdriver
-from selenium.webdriver.common.keys import Keys
+
 import time
 
 bot_token = ''
@@ -57,48 +56,6 @@ def kirim_telegram(bot_token, chat_id):
         print('Message sent successfully!')
     else:
         print('Failed to send message:', response.text)
-
-
-def kirim_wa():
-    # Path ke chromedriver
-    driver_path = 'path/to/chromedriver'
-
-    # Inisialisasi WebDriver
-    driver = webdriver.Chrome(driver_path)
-
-    # Buka WhatsApp Web
-    driver.get('https://web.whatsapp.com')
-
-    # Tunggu beberapa detik agar QR Code muncul dan bisa dipindai
-    input("Scan QR Code and press Enter here...")
-
-    # Temukan kontak
-    contact_name = 'Nama Kontak'  # Ganti dengan nama kontak atau grup
-    message = 'Hello, this is a message from Python!'  # Pesan yang ingin dikirim
-
-    # Temukan elemen input chat dan kirim pesan
-    try:
-        # Cari dan klik pada nama kontak
-        search_box = driver.find_element_by_xpath('//div[@contenteditable="true"][@data-tab="3"]')
-        search_box.click()
-        search_box.send_keys(contact_name)
-        search_box.send_keys(Keys.RETURN)
-        
-        # Tunggu beberapa detik agar chat terbuka
-        time.sleep(2)
-        
-        # Temukan dan klik elemen input pesan
-        message_box = driver.find_element_by_xpath('//div[@contenteditable="true"][@data-tab="6"]')
-        message_box.click()
-        message_box.send_keys(message)
-        message_box.send_keys(Keys.RETURN)
-        
-        print("Message sent successfully!")
-    finally:
-        # Tutup browser setelah beberapa detik
-        time.sleep(5)
-        driver.quit()
-
 
 
 # Function to get PHPSESSID from the header of the response
@@ -201,4 +158,20 @@ for times in pray_times:
         print(f"ASAR        : {times['ashar']}")
         print(f"MAGHRIB : {times['maghrib']}")
         print(f"ISYA          : {times['isya']}")
-        kirim_telegram(bot_token, chat_id)
+        # kirim_telegram(bot_token, chat_id)
+        
+        message = f"""
+                *JADWAL SHALAT*
+                *Wilayah DKI Jakarta & Sekitarnya*
+                *{times['tanggal']} M*
+                
+                SUBUH     : {times['subuh']}
+                TERBIT      : {times['terbit']}
+                DHUHA    : {times['dhuha']}
+                DZUHUR   : {times['dzuhur']}
+                ASAR        : {times['ashar']}
+                MAGHRIB : {times['maghrib']}
+                ISYA          : {times['isya']}
+                """
+        
+        kirim_wa(message)
