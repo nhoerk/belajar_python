@@ -174,4 +174,3 @@ for times in pray_times:
                 ISYA          : {times['isya']}
                 """
         
-        kirim_wa(message)
